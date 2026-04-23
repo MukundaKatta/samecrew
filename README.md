@@ -1,32 +1,45 @@
 # SameCrew
 
-> Therapy that gets it.
-
 AI-first emotional support for people who share your context. New dads. Immigrants. First-time founders.
 
-## What it does
+**Status:** v0 skeleton — landing page + one empathetic-chat preview route. Full AI not yet wired.
 
-- **Community-shaped** — Grounded in the lived experience of people like you, not generic self-help.
-- **Always available** — 3am panic attacks do not wait for business hours. Neither do we.
-- **Private by design** — End-to-end encrypted. We never train on your conversations.
+---
 
-## Why
+## Stack
 
-Mental health. Part of a 20-product exploration of high-demand consumer and SMB markets.
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind v4 |
+| Fonts | Inter via `next/font/google` |
+| Hosting | Vercel (zero config) |
+| Waitlist | https://waitlist-api-sigma.vercel.app |
 
-## Status
+## Run locally
 
-Landing page live. Product in planning.
+```bash
+pnpm install
+pnpm dev
+```
 
-- **Live**: https://mukundakatta.github.io/samecrew/
+Open http://localhost:3000.
 
-## Stack (when built)
+## Deploy
 
-- Next.js 16 (App Router)
-- Supabase for auth + data
-- Stripe for payments
-- Deployed on Vercel
+Push to `main` — Vercel picks it up automatically. No environment variables required.
 
-## Local preview
+## Routes
 
-Just open `index.html` in a browser — it is a static landing page with the Tailwind CDN.
+| Route | Description |
+|---|---|
+| `/` | Landing page (original copy + design preserved) |
+| `/try` | Pick a situation (adoption, immigration, chronic illness, LGBTQ+, caregiver), see an empathetic canned chat preview |
+| `/api/waitlist` | `POST { email }` → forwards to waitlist-api-sigma with `product: "samecrew"` |
+
+## What's next
+
+- Wire real AI (empathetic conversation generation) behind `/try`
+- Auth + per-user session history
+- Community matching and group support features
